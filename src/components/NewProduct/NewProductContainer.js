@@ -3,11 +3,14 @@ import NewProductForm from './NewProductForm'
 import { connect } from 'react-redux'
 import ProductCard from '../common/ProductCard'
 
+import {onCreateProduct} from '../../redux/ducks/products'
+
 
 class NewProductContainer extends Component {
 
   submit = values => {
     console.log(values)
+    this.props.onCreateProduct(values)
   }
 
   render() {
@@ -28,4 +31,4 @@ const mapSateToProps = (state) => {
   return state.form;
 }
 
-export default  connect(mapSateToProps, {})(NewProductContainer)
+export default  connect(mapSateToProps, {onCreateProduct})(NewProductContainer)
