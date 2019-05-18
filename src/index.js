@@ -3,33 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-
-
-import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import {Provider} from 'react-redux';
 import configureStore from './redux/configureStore';
-
-
+import {BrowserRouter} from 'react-router-dom';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 
-import 'uikit/dist/css/uikit.min.css'
+import 'uikit/dist/css/uikit.min.css';
 
-const store= configureStore();
+// loads the Icon plugin
+UIkit.use(Icons);
 
-UIkit.use(Icons)
+const store = configureStore();
 
-let WithRouter = () => (
-  <BrowserRouter >
-    <App />
-  </BrowserRouter>
+const WithRouter = () => (
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
 )
 
-let WithProvider = () => (
-  <Provider store={store}>
-    <WithRouter />
-  </Provider>
+const WithProvider = () => (
+    <Provider store={store}>
+        <WithRouter />
+    </Provider>
 )
 
 ReactDOM.render(<WithProvider />, document.getElementById('root'));

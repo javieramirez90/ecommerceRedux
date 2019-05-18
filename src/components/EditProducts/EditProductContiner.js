@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
-import NewProductForm from './NewProductForm';
+import NewProductForm from '../NewProduct/NewProductForm';
 import {connect} from 'react-redux';
 import ProductCard from '../common/ProductCard';
-import {onCreateProduct} from '../../redux/ducks/products';
+import {onEditProduct} from '../../redux/ducks/products';
 
-class NewProductContiner extends Component{
+class EditProductContiner extends Component{
 
     submit = values => {
-        let {images, ...product} = values //saco images de values y todo lo que sobre lo meto en una nueva constante llamada product
-        images = images.split(',');
-        this.props.onCreateProduct({...product, images})
-        console.log(images, product)
-        // this.props.onCreateProduct(values)
+      console.log(values)
+      this.props.onEditProduct(values)
     };
 
     render(){
@@ -36,4 +33,4 @@ class NewProductContiner extends Component{
 
 const mapStateToProps = (state) => state.form;
 
-export default connect(mapStateToProps, {onCreateProduct})(NewProductContiner);
+export default connect(mapStateToProps, {onEditProduct})(EditProductContiner);
